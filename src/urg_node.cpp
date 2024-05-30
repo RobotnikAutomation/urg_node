@@ -109,7 +109,7 @@ void UrgNode::initSetup()
     echoes_pub_ =
       std::make_unique<laser_proc::LaserPublisher>(this->get_node_topics_interface(), 20);
   } else {
-    laser_pub_ = this->create_publisher<sensor_msgs::msg::LaserScan>("scan", rclcpp::QoS(KeepLast(20)).best_effort().durability_volatile());
+    laser_pub_ = this->create_publisher<sensor_msgs::msg::LaserScan>("scan", rclcpp::QoS(20).best_effort().durability_volatile());
   }
 
   status_service_ = this->create_service<std_srvs::srv::Trigger>(
